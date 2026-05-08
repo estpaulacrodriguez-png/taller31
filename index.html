@@ -75,3 +75,88 @@
 </head>
 
 <body>
+        <!-- TITULO -->
+    <h1>Algoritmo Cohen-Sutherland</h1>
+
+    <div class="container">
+
+        <!-- ======================
+             AREA DEL CANVAS
+        ======================= -->
+        <div class="canvas-area">
+
+            <!-- CANVAS -->
+            <canvas id="canvas" width="700" height="500"></canvas>
+
+            <br><br>
+
+            <!-- BOTON ESCENA ANTERIOR -->
+            <button onclick="anteriorEscena()">
+                Anterior
+            </button>
+
+            <!-- BOTON SIGUIENTE ESCENA -->
+            <button onclick="siguienteEscena()">
+                Siguiente
+            </button>
+
+            <!-- NOMBRE DE LA ESCENA -->
+            <p id="nombreEscena"></p>
+
+        </div>
+
+        <!-- ======================
+             PANEL LATERAL
+        ======================= -->
+        <div class="panel">
+
+            <!-- TITULO PANEL -->
+            <h3>Viewport</h3>
+
+            <!-- INPUT XMIN -->
+            <label>Xmin</label><br>
+            <input type="number" id="xmin" value="100"><br>
+
+            <!-- INPUT YMIN -->
+            <label>Ymin</label><br>
+            <input type="number" id="ymin" value="100"><br>
+
+            <!-- INPUT XMAX -->
+            <label>Xmax</label><br>
+            <input type="number" id="xmax" value="400"><br>
+
+            <!-- INPUT YMAX -->
+            <label>Ymax</label><br>
+            <input type="number" id="ymax" value="300"><br>
+
+            <!-- BOTON ACTUALIZAR -->
+            <button onclick="actualizarViewport()">
+                Actualizar
+            </button>
+
+            <!-- INFORMACION -->
+            <div class="info">
+
+                <!-- REGION CODE P1 -->
+                <p>P1: <span id="code1"></span></p>
+
+                <!-- REGION CODE P2 -->
+                <p>P2: <span id="code2"></span></p>
+
+                <!-- AND ENTRE CODIGOS -->
+                <p>AND: <span id="and"></span></p>
+
+                <!-- RESULTADO -->
+                <p id="resultado"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
