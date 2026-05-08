@@ -258,7 +258,7 @@ function cohenSutherland(x1, y1, x2, y2){
 
     while(true){
 
-        // ==================================
+       // ==================================
         // ACEPTACION TRIVIAL
         // ambos puntos están dentro
         // ==================================
@@ -278,3 +278,76 @@ function cohenSutherland(x1, y1, x2, y2){
 
             break;
         }
+
+        // ==================================
+        // RECORTE PARCIAL
+        // ==================================
+
+        else{
+
+            let codigoExterior;
+            let x, y;
+
+            // escoger punto externo
+            if(codigo1 !== 0)
+                codigoExterior = codigo1;
+
+            else
+                codigoExterior = codigo2;
+
+            // ARRIBA
+            if(codigoExterior & TOP){
+
+                x = x1 + (x2 - x1) *
+                    (ymax - y1) / (y2 - y1);
+
+                y = ymax;
+            }
+
+            // ABAJO
+            else if(codigoExterior & BOTTOM){
+
+                x = x1 + (x2 - x1) *
+                    (ymin - y1) / (y2 - y1);
+
+                y = ymin;
+            }
+
+            // DERECHA
+            else if(codigoExterior & RIGHT){
+
+                y = y1 + (y2 - y1) *
+                    (xmax - x1) / (x2 - x1);
+
+                x = xmax;
+            }
+
+            // IZQUIERDA
+            else if(codigoExterior & LEFT){
+
+                y = y1 + (y2 - y1) *
+                    (xmin - x1) / (x2 - x1);
+
+                x = xmin;
+            }
+
+            // actualizar punto 1
+            if(codigoExterior === codigo1){
+
+                x1 = x;
+                y1 = y;
+
+                codigo1 = calcularCodigo(x1,y1);
+            }
+
+            // actualizar punto 2
+            else{
+
+                x2 = x;
+                y2 = y;
+
+                codigo2 = calcularCodigo(x2,y2);
+            }
+        }
+    } 
+}
