@@ -107,3 +107,56 @@ const escenas = [
     }
 
 ];
+// ==========================================
+// FUNCION PARA DIBUJAR PIXELES
+// ==========================================
+
+function plotPixel(x, y, color="white"){
+
+    // color del pixel
+    ctx.fillStyle = color;
+
+    // invertir eje Y
+    let canvasY = canvas.height - y;
+
+    // dibujar pixel
+    ctx.fillRect(x, canvasY, 2, 2);
+}
+
+// ==========================================
+// FUNCION PARA DIBUJAR LINEAS
+// ==========================================
+
+function dibujarLinea(x1, y1, x2, y2, color="white"){
+
+    // diferencias
+    let dx = x2 - x1;
+    let dy = y2 - y1;
+
+    // pasos
+    let pasos = Math.max(
+        Math.abs(dx),
+        Math.abs(dy)
+    );
+
+    // incrementos
+    let incrementoX = dx / pasos;
+    let incrementoY = dy / pasos;
+
+    // punto inicial
+    let x = x1;
+    let y = y1;
+
+    // recorrer línea
+    for(let i=0; i<=pasos; i++){
+
+        plotPixel(
+            Math.round(x),
+            Math.round(y),
+            color
+        );
+
+        x += incrementoX;
+        y += incrementoY;
+    }
+}
