@@ -203,3 +203,78 @@ function dibujarViewport(){
         "cyan"
     );
 }
+
+// ==========================================
+// CALCULAR REGION CODE
+// ==========================================
+
+function calcularCodigo(x, y){
+
+    // iniciar dentro
+    let codigo = INSIDE;
+
+    // izquierda
+    if(x < xmin)
+        codigo |= LEFT;
+
+    // derecha
+    else if(x > xmax)
+        codigo |= RIGHT;
+
+    // abajo
+    if(y < ymin)
+        codigo |= BOTTOM;
+
+    // arriba
+    else if(y > ymax)
+        codigo |= TOP;
+
+    return codigo;
+}
+
+// ==========================================
+// CONVERTIR A BINARIO
+// ==========================================
+
+function binario(numero){
+
+    return numero
+        .toString(2)
+        .padStart(4,"0");
+}
+
+// ==========================================
+// ALGORITMO COHEN-SUTHERLAND
+// ==========================================
+
+function cohenSutherland(x1, y1, x2, y2){
+
+    // calcular region codes
+    let codigo1 = calcularCodigo(x1,y1);
+    let codigo2 = calcularCodigo(x2,y2);
+
+    // variable de aceptación
+    let aceptada = false;
+
+    while(true){
+
+        // ==================================
+        // ACEPTACION TRIVIAL
+        // ambos puntos están dentro
+        // ==================================
+
+        if((codigo1 | codigo2) === 0){
+
+            aceptada = true;
+            break;
+        }
+
+        // ==================================
+        // RECHAZO TRIVIAL
+        // ambos puntos comparten región
+        // ==================================
+
+        else if((codigo1 & codigo2) !== 0){
+
+            break;
+        }
