@@ -472,3 +472,32 @@ function dibujarEscena(){
         );
     }
 }
+// ==========================================
+// SIGUIENTE ESCENA
+// ==========================================
+
+function siguienteEscena(){
+
+    escenaActual++;
+
+    // volver al inicio
+    if(escenaActual >= escenas.length)
+        escenaActual = 0;
+
+    dibujarEscena();
+}
+
+// ==========================================
+// ESCENA ANTERIOR
+// ==========================================
+
+function anteriorEscena(){
+
+    escenaActual--;
+
+    // volver al final
+    if(escenaActual < 0)
+        escenaActual = escenas.length - 1;
+
+    dibujarEscena();
+}
