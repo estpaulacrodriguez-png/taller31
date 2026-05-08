@@ -44,3 +44,66 @@ let escenaActual = 0;
 // ==========================================
 // CASOS DE PRUEBA
 // ==========================================
+const escenas = [
+
+    // línea totalmente dentro
+    {
+        nombre: "Linea dentro",
+
+        linea: {
+            x1:150,
+            y1:150,
+            x2:300,
+            y2:250
+        }
+    },
+
+    // línea totalmente fuera
+    {
+        nombre: "Linea fuera",
+
+        linea: {
+            x1:20,
+            y1:20,
+            x2:80,
+            y2:80
+        }
+    },
+
+    // línea entrando al viewport
+    {
+        nombre: "Linea entrando",
+
+        linea: {
+            x1:20,
+            y1:200,
+            x2:250,
+            y2:200
+        }
+    },
+
+    // línea saliendo del viewport
+    {
+        nombre: "Linea saliendo",
+
+        linea: {
+            x1:250,
+            y1:200,
+            x2:600,
+            y2:200
+        }
+    },
+
+    // línea atravesando el viewport
+    {
+        nombre: "Linea atravesando",
+
+        linea: {
+            x1:20,
+            y1:50,
+            x2:600,
+            y2:350
+        }
+    }
+
+];
