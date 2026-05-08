@@ -160,3 +160,46 @@ function dibujarLinea(x1, y1, x2, y2, color="white"){
         y += incrementoY;
     }
 }
+
+// ==========================================
+// FUNCION PARA DIBUJAR VIEWPORT
+// ==========================================
+
+function dibujarViewport(){
+
+    // línea inferior
+    dibujarLinea(
+        xmin,
+        ymin,
+        xmax,
+        ymin,
+        "cyan"
+    );
+
+    // línea derecha
+    dibujarLinea(
+        xmax,
+        ymin,
+        xmax,
+        ymax,
+        "cyan"
+    );
+
+    // línea superior
+    dibujarLinea(
+        xmax,
+        ymax,
+        xmin,
+        ymax,
+        "cyan"
+    );
+
+    // línea izquierda
+    dibujarLinea(
+        xmin,
+        ymax,
+        xmin,
+        ymin,
+        "cyan"
+    );
+}
