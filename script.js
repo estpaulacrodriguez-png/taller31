@@ -501,3 +501,38 @@ function anteriorEscena(){
 
     dibujarEscena();
 }
+// ==========================================
+// ACTUALIZAR VIEWPORT
+// ==========================================
+
+function actualizarViewport(){
+
+    // leer nuevos valores
+    xmin = parseInt(
+        document.getElementById("xmin").value
+    );
+
+    ymin = parseInt(
+        document.getElementById("ymin").value
+    );
+
+    xmax = parseInt(
+        document.getElementById("xmax").value
+    );
+
+    ymax = parseInt(
+        document.getElementById("ymax").value
+    );
+
+    // redibujar escena
+    dibujarEscena();
+}
+
+// ==========================================
+// INICIO DEL PROGRAMA
+// ==========================================
+
+window.onload = function(){
+
+    dibujarEscena();
+};
