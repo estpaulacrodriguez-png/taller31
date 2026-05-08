@@ -258,7 +258,7 @@ function cohenSutherland(x1, y1, x2, y2){
 
     while(true){
 
-       // ==================================
+        // ==================================
         // ACEPTACION TRIVIAL
         // ambos puntos están dentro
         // ==================================
@@ -349,9 +349,8 @@ function cohenSutherland(x1, y1, x2, y2){
                 codigo2 = calcularCodigo(x2,y2);
             }
         }
-    } 
-}
- 
+    }
+
     // retornar resultado
     return{
 
@@ -363,176 +362,4 @@ function cohenSutherland(x1, y1, x2, y2){
         x2,
         y2
     };
-
-
-// ==========================================
-// DIBUJAR ESCENA
-// ==========================================
-
-function dibujarEscena(){
-
-    // limpiar canvas
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    // dibujar viewport
-    dibujarViewport();
-
-    // obtener escena actual
-    let escena = escenas[escenaActual];
-
-    // mostrar nombre
-    document.getElementById(
-        "nombreEscena"
-    ).innerText = escena.nombre;
-
-    // obtener línea
-    let l = escena.linea;
-
-    // dibujar línea original
-    dibujarLinea(
-        l.x1,
-        l.y1,
-        l.x2,
-        l.y2,
-        "gray"
-    );
-
-    // aplicar algoritmo
-    let resultado = cohenSutherland(
-        l.x1,
-        l.y1,
-        l.x2,
-        l.y2
-    );
-        // obtener códigos
-    let c1 = calcularCodigo(l.x1,l.y1);
-    let c2 = calcularCodigo(l.x2,l.y2);
-
-    // mostrar código P1
-    document.getElementById("code1")
-        .innerText = binario(c1);
-
-    // mostrar código P2
-    document.getElementById("code2")
-        .innerText = binario(c2);
-
-    // mostrar operación AND
-    document.getElementById("and")
-        .innerText = binario(c1 & c2);
-
-    // línea visible
-    if(resultado.visible){
-
-        // dibujar línea recortada
-        dibujarLinea(
-            resultado.x1,
-            resultado.y1,
-            resultado.x2,
-            resultado.y2,
-            "lime"
-        );
-
-        // aceptación trivial
-        if((c1 | c2) === 0){
-
-            document.getElementById(
-                "resultado"
-            ).innerText =
-                "Aceptacion trivial";
-             }
-     // recorte parcial
-        else{
-
-            document.getElementById(
-                "resultado"
-            ).innerText =
-                "Recorte parcial";
-        }
-    }
-  // rechazo trivial
-    else{
-
-        document.getElementById(
-            "resultado"
-        ).innerText =
-            "Rechazo trivial";
-
-        // línea rechazada
-        dibujarLinea(
-            l.x1,
-            l.y1,
-            l.x2,
-            l.y2,
-            "red"
-        );
-    }
 }
-// ==========================================
-// SIGUIENTE ESCENA
-// ==========================================
-
-function siguienteEscena(){
-
-    escenaActual++;
-
-    // volver al inicio
-    if(escenaActual >= escenas.length)
-        escenaActual = 0;
-
-    dibujarEscena();
-}
-
-// ==========================================
-// ESCENA ANTERIOR
-// ==========================================
-
-function anteriorEscena(){
-
-    escenaActual--;
-
-    // volver al final
-    if(escenaActual < 0)
-        escenaActual = escenas.length - 1;
-
-    dibujarEscena();
-}
-// ==========================================
-// ACTUALIZAR VIEWPORT
-// ==========================================
-
-function actualizarViewport(){
-
-    // leer nuevos valores
-    xmin = parseInt(
-        document.getElementById("xmin").value
-    );
-
-    ymin = parseInt(
-        document.getElementById("ymin").value
-    );
-
-    xmax = parseInt(
-        document.getElementById("xmax").value
-    );
-
-    ymax = parseInt(
-        document.getElementById("ymax").value
-    );
-
-    // redibujar escena
-    dibujarEscena();
-}
-
-// ==========================================
-// INICIO DEL PROGRAMA
-// ==========================================
-
-window.onload = function(){
-
-    dibujarEscena();
-};
